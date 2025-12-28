@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-12-27T21:40:47 IST" name="Default suite" finished-at="2025-12-27T21:40:48 IST" duration-ms="1036">
+    <groups>
+    </groups>
+    <test started-at="2025-12-27T21:40:47 IST" name="Default test" finished-at="2025-12-27T21:40:48 IST" duration-ms="1036">
+      <class name="rest.SumValidation">
+        <test-method signature="sumOfCourses()[pri:0, instance:rest.SumValidation@4b0d79fc]" started-at="2025-12-27T21:40:47 IST" name="sumOfCourses" finished-at="2025-12-27T21:40:48 IST" duration-ms="993" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- sumOfCourses -->
+      </class> <!-- rest.SumValidation -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
