@@ -1,15 +1,17 @@
 package files;
 
-import io.restassured.RestAssured;
-import static org.hamcrest.Matchers.*;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+import java.io.IOException;
 
 import org.testng.Assert;
 
-import static io.restassured.RestAssured.*;
+import io.restassured.RestAssured;
 
-public class TestCase1 {
+public class TestCase2UsingPayloadAsJsonFile {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		// Given - all input details
 		// When - Submit the API
@@ -18,9 +20,14 @@ public class TestCase1 {
 		// Add place -> Update Place with new address -> Get Place to validate if new
 		// address is present in response
 
+		// Content of the file to sting -> content of file can convert into Byte -> Byte
+		// data to String
+
 		RestAssured.baseURI = "https://rahulshettyacademy.com";
 		String response = given().log().all().queryParam("key", "qaclick123").header("Content-Type", "application/json")
-				.body(Payload.AddPlace()).when().post("maps/api/place/add/json").then().extract().response().asString();
+				.body(ReUsableMethods.jsonFileToString(
+						"C:\\Users\\mkc96\\eclipse-workspace\\RestAssuredProject\\src\\testData\\addAddress.json"))
+				.when().post("maps/api/place/add/json").then().extract().response().asString();
 		System.out.println("Response :- " + response);
 
 		String placeId = ReUsableMethods.rawToJson(response).getString("place_id");

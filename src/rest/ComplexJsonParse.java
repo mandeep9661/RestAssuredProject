@@ -1,9 +1,5 @@
 package rest;
 
-import static org.testng.Assert.assertEquals;
-
-import org.testng.Assert;
-
 import files.Payload;
 import io.restassured.path.json.JsonPath;
 
