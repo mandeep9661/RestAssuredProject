@@ -31,5 +31,20 @@ public class Payload {
 				+ "}\r\n" + "";
 		return payload;
 	}
+	
+	public static String AddIssue(String issueSummary) {
+		String payload = "{\r\n"
+				+ "  \"fields\": {\r\n"
+				+ "    \"project\": {\r\n"
+				+ "      \"key\": \"RJ\"\r\n"
+				+ "    },\r\n"
+				+ "    \"summary\": \""+issueSummary+"\",\r\n"
+				+ "    \"issuetype\": {\r\n"
+				+ "      \"name\": \"Bug\"\r\n"
+				+ "    }\r\n"
+				+ "  }\r\n"
+				+ "}";
+		return payload;
+	}
 
 }

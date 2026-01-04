@@ -1,61 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-28T17:53:12 IST" name="Default suite" finished-at="2025-12-28T17:53:16 IST" duration-ms="4031">
+  <suite started-at="2026-01-04T11:35:11 IST" name="Default suite" finished-at="2026-01-04T11:35:14 IST" duration-ms="3110">
     <groups>
     </groups>
-    <test started-at="2025-12-28T17:53:12 IST" name="Default test" finished-at="2025-12-28T17:53:16 IST" duration-ms="4031">
-      <class name="rest.DynamicJson">
-        <test-method signature="addBook(java.lang.String,java.lang.String)[pri:0, instance:rest.DynamicJson@5a45133e]" started-at="2025-12-28T17:53:12 IST" name="addBook" data-provider="BookData" finished-at="2025-12-28T17:53:14 IST" duration-ms="2554" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[heka]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[3343]]>
-              </value>
-            </param>
-          </params>
+    <test started-at="2026-01-04T11:35:11 IST" name="Default test" finished-at="2026-01-04T11:35:14 IST" duration-ms="3110">
+      <class name="oAuth.OAuthTest">
+        <test-method signature="getAccessToken()[pri:0, instance:oAuth.OAuthTest@d9345cd]" started-at="2026-01-04T11:35:11 IST" name="getAccessToken" finished-at="2026-01-04T11:35:13 IST" duration-ms="2781" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addBook -->
-        <test-method signature="addBook(java.lang.String,java.lang.String)[pri:0, instance:rest.DynamicJson@5a45133e]" started-at="2025-12-28T17:53:14 IST" name="addBook" data-provider="BookData" finished-at="2025-12-28T17:53:15 IST" duration-ms="652" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[svgfd]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[434]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- getAccessToken -->
+        <test-method signature="getCourseDetails()[pri:0, instance:oAuth.OAuthTest@d9345cd]" started-at="2026-01-04T11:35:13 IST" name="getCourseDetails" finished-at="2026-01-04T11:35:14 IST" depends-on-methods="oAuth.OAuthTest.getAccessToken" duration-ms="278" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addBook -->
-        <test-method signature="addBook(java.lang.String,java.lang.String)[pri:0, instance:rest.DynamicJson@5a45133e]" started-at="2025-12-28T17:53:15 IST" name="addBook" data-provider="BookData" finished-at="2025-12-28T17:53:16 IST" duration-ms="756" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[fvdrr]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[3445]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- addBook -->
-      </class> <!-- rest.DynamicJson -->
+        </test-method> <!-- getCourseDetails -->
+      </class> <!-- oAuth.OAuthTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

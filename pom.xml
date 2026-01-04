@@ -36,5 +36,12 @@
 			<artifactId>hamcrest</artifactId>
 			<version>3.0</version>
 		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>tools.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>3.0.3</version>
+		</dependency>
 	</dependencies>
 </project>
