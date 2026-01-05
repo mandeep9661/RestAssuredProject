@@ -3,11 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="files.BugTest">
+      <class name="oAuth.OAuthTestWithPojo">
         <methods>
-          <include name="testBugTest"/>
+          <include name="getAccessToken"/>
+          <include name="getCourseDetails"/>
         </methods>
-      </class> <!-- files.BugTest -->
+      </class> <!-- oAuth.OAuthTestWithPojo -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

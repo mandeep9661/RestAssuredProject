@@ -40,6 +40,11 @@ public class OAuthTest {
 
 		RestAssured.baseURI = "https://rahulshettyacademy.com/oauthapi/getCourseDetails";
 		given().queryParams("access_token", access_token).when().get().then().log().all().assertThat().statusCode(401);
+		
+//		Course code Type
+//		String response = given().queryParams("access_token", access_token).when().log().all()
+//				.get("https://rahulshettyacademy.com/oauthapi/getCourseDetails").asString();
+//		System.out.println("Response : " + response);
 	}
 
 }
