@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-04T21:24:51 IST" name="Default suite" finished-at="2026-01-04T21:24:53 IST" duration-ms="2691">
+  <suite started-at="2026-01-05T09:29:52 IST" name="Default suite" finished-at="2026-01-05T09:29:55 IST" duration-ms="2603">
     <groups>
     </groups>
-    <test started-at="2026-01-04T21:24:51 IST" name="Default test" finished-at="2026-01-04T21:24:53 IST" duration-ms="2691">
-      <class name="files.SerializeTest">
-        <test-method signature="serializeTest()[pri:0, instance:files.SerializeTest@4efac082]" started-at="2026-01-04T21:24:51 IST" name="serializeTest" finished-at="2026-01-04T21:24:53 IST" duration-ms="2639" status="PASS">
+    <test started-at="2026-01-05T09:29:52 IST" name="Default test" finished-at="2026-01-05T09:29:55 IST" duration-ms="2603">
+      <class name="files.SpecBuilderTest">
+        <test-method signature="serializeTest()[pri:0, instance:files.SpecBuilderTest@4efac082]" started-at="2026-01-05T09:29:52 IST" name="serializeTest" finished-at="2026-01-05T09:29:55 IST" duration-ms="2553" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- serializeTest -->
-      </class> <!-- files.SerializeTest -->
+      </class> <!-- files.SpecBuilderTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -10,15 +10,21 @@ import org.testng.annotations.Test;
 import googleAPIPojo.Location;
 import googleAPIPojo.SetPlace;
 import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 
 public class SpecBuilderTest {
-	
+
 	SetPlace place = new SetPlace();
 
 	@Test
 	public void serializeTest() {
-		
+
 		place.setAccuracy(50);
 		place.setName("Mandeep House");
 		place.setPhone_number("(+91) 983 893 3937");
@@ -34,14 +40,19 @@ public class SpecBuilderTest {
 		location.setLng(33.427362);
 		place.setLocation(location);
 
-		RestAssured.baseURI = "https://rahulshettyacademy.com";
-	    String response = given().queryParam("key", "qaclick123").body(place)
-	    		.when().post("/maps/api/place/add/json").then().log().all().assertThat()
-				.statusCode(200).extract().response().asString();
-	    JsonPath jsonPath = ReUsableMethods.rawToJson(response);
-	    System.out.println(jsonPath);
-	    
-	    
+		RequestSpecification req = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
+				.addQueryParam("key", "qaclick123").setContentType(ContentType.JSON).build();
+
+		ResponseSpecification resp = new ResponseSpecBuilder().expectContentType(ContentType.JSON).expectStatusCode(200)
+				.build();
+
+		RequestSpecification res = given().spec(req).body(place);
+
+		String response = res.when().post("/maps/api/place/add/json").then().log().all().spec(resp).extract().response()
+				.asString();
+		JsonPath jsonPath = ReUsableMethods.rawToJson(response);
+		System.out.println(jsonPath);
+
 	}
 
 }
