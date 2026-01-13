@@ -6,6 +6,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import ecomPojo.EcomLogin;
@@ -25,6 +26,7 @@ public class EcommerceAPITest {
 	String token;
 	String userId;
 	String productId;
+	String orderId;
 
 	@Test(description = "Login to application to get token")
 	public void login() {
@@ -53,11 +55,12 @@ public class EcommerceAPITest {
 		ProductResponse productResponse = requestAddProduct.when().post("api/ecom/product/add-product").then().log()
 				.all().spec(getResponseSpec(201)).extract().response().as(ProductResponse.class);
 		productId = productResponse.getProductId();
+		System.out.println("Product ID : " + productId);
 	}
 
 	@Test(description = "Create order", dependsOnMethods = "createProduct")
 	public void createOrder() {
-		
+
 		Orders order = new Orders();
 		order.setCountry("India");
 		order.setProductOrderedId(productId);
@@ -65,11 +68,47 @@ public class EcommerceAPITest {
 		listOrders.add(order);
 		OrderDetails details = new OrderDetails();
 		details.setOrders(listOrders);
-		
-		RequestSpecification requestOrderCreate = given().spec(getRequestSpecWithToken()).body(details);
-		requestOrderCreate.when().post("api/ecom/order/create-order").then().log().all().spec(getResponseSpec(201));
-		
-		
+
+		RequestSpecification requestOrderCreate = given().spec(getRequestSpecWithToken())
+				.header("Content-Type", "application/json").body(details);
+		String responseOrderCreate = requestOrderCreate.when().post("api/ecom/order/create-order").then().log().all()
+				.spec(getResponseSpec(201)).extract().response().asString();
+		JsonPath jsonPathOrderCreate = ReUsableMethods.rawToJson(responseOrderCreate);
+		orderId = jsonPathOrderCreate.getString("orders[0]");
+		System.out.println("Order Id : " + orderId);
+
+	}
+
+	@Test(description = "Get order Place Details", dependsOnMethods = "createOrder")
+	public void viewOrderPlaceDetails() {
+
+		RequestSpecification orderPlaceDetailsReq = given().spec(getRequestSpecWithToken()).queryParam("id", orderId);
+
+		String responseOrderPlaceDetails = orderPlaceDetailsReq.when().get("api/ecom/order/get-orders-details").then()
+				.log().all().spec(getResponseSpec(200)).extract().response().asString();
+
+		JsonPath jsonPathOrderCreate = ReUsableMethods.rawToJson(responseOrderPlaceDetails);
+		String message = jsonPathOrderCreate.getString("message");
+		Assert.assertEquals(message, "Orders fetched for customer Successfully", "Order not placed");
+
+	}
+
+	@Test(description = "Delete Product", dependsOnMethods = "createProduct")
+	public void deleteProduct() {
+
+		RequestSpecification requestDeleteOrder = given().spec(getRequestSpecWithToken()).pathParam("productId",
+				productId);
+		requestDeleteOrder.when().delete("/api/ecom/product/delete-product/{productId}").then().log().all()
+				.spec(getResponseSpec(200));
+	}
+	
+	@Test(description = "Delete Order", dependsOnMethods = "viewOrderPlaceDetails")
+	public void deleteOrder() {
+
+		RequestSpecification requestDeleteOrder = given().spec(getRequestSpecWithToken()).pathParam("orderId",
+				orderId);
+		requestDeleteOrder.when().delete("api/ecom/order/delete-order/{orderId}").then().log().all()
+				.spec(getResponseSpec(200));
 	}
 
 	public RequestSpecification getRequestSpec() {

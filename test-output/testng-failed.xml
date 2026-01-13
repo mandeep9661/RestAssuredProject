@@ -5,7 +5,11 @@
     <classes>
       <class name="rest.EcommerceAPITest">
         <methods>
+          <include name="createOrder"/>
           <include name="createProduct"/>
+          <include name="viewOrderPlaceDetails"/>
+          <include name="login"/>
+          <include name="deleteOrder"/>
         </methods>
       </class> <!-- rest.EcommerceAPITest -->
     </classes>
